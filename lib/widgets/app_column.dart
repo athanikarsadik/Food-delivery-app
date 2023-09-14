@@ -22,7 +22,7 @@ class AppColumn extends StatelessWidget {
               children: List.generate(
                   5,
                   (index) =>
-                      Icon(Icons.star, color: AppColors.mainColor, size: 15)),
+                      const Icon(Icons.star, color: AppColors.mainColor, size: 15)),
             ),
             SizedBox(
               width: Dimensions.height10,
@@ -39,7 +39,7 @@ class AppColumn extends StatelessWidget {
           ],
         ),
         SizedBox(height: Dimensions.height20),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconsAndTextWidget(

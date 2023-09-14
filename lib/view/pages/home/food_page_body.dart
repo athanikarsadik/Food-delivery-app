@@ -18,8 +18,8 @@ class FoodPageBody extends StatefulWidget {
 class _FoodPageBodyState extends State<FoodPageBody> {
   PageController pageController = PageController(viewportFraction: 0.9);
   var _currPageValue = 0.0;
-  double _scaleFactor = 0.8;
-  double _height = Dimensions.pageViewContainer;
+  final double _scaleFactor = 0.8;
+  final double _height = Dimensions.pageViewContainer;
 
   @override
   void initState() {
@@ -43,7 +43,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     return Column(
       children: [
         //slider section
-        Container(
+        SizedBox(
           height: Dimensions.pageView,
           child: PageView.builder(
               controller: pageController,
@@ -53,9 +53,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               }),
         ),
         //dots
-        new DotsIndicator(
+        DotsIndicator(
           dotsCount: 5,
-          position: _currPageValue.toInt(),
+          position: _currPageValue.round(),
           decorator: DotsDecorator(
             activeColor: AppColors.mainColor,
             size: const Size.square(9.0),
@@ -143,7 +143,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                   SizedBox(
                                     height: Dimensions.height10,
                                   ),
-                                  Row(
+                                  const Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
@@ -176,7 +176,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   }
 
   Widget _buildPageItem(int position) {
-    Matrix4 matrix = new Matrix4.identity();
+    Matrix4 matrix =  Matrix4.identity();
     if (position == _currPageValue.floor()) {
       var currScale = 1 - (_currPageValue - position) * (1 - _scaleFactor);
       var currTrans = _height * (1 - currScale) / 2;
@@ -248,7 +248,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     left: Dimensions.width15,
                     right: Dimensions.width15,
                     top: Dimensions.height10),
-                child: AppColumn(text: "Chinese Side"),
+                child: const AppColumn(text: "Chinese Side"),
               ),
             ),
           )

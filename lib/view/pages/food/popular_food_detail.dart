@@ -92,7 +92,7 @@ class PopularFoodDetail extends StatelessWidget {
                     color: Colors.white),
                 child: Row(
                   children: [
-                    Icon(Icons.remove, color: AppColors.signColor),
+                    const Icon(Icons.remove, color: AppColors.signColor),
                     SizedBox(
                       width: Dimensions.width10 / 2,
                     ),
@@ -100,7 +100,7 @@ class PopularFoodDetail extends StatelessWidget {
                     SizedBox(
                       width: Dimensions.width10 / 2,
                     ),
-                    Icon(Icons.add, color: AppColors.signColor),
+                    const Icon(Icons.add, color: AppColors.signColor),
                   ],
                 ),
               ),
