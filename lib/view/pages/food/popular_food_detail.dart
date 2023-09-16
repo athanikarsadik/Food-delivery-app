@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/utils/colors.dart';
+import 'package:food_delivery/widgets/expandable_text_widget.dart';
 
 import '../../../utils/dimensions.dart';
 import '../../../widgets/app_column.dart';
@@ -14,6 +15,7 @@ class PopularFoodDetail extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(children: [
+        //backgroung img
         Positioned(
           left: 0,
           right: 0,
@@ -28,6 +30,7 @@ class PopularFoodDetail extends StatelessWidget {
                     ))),
           ),
         ),
+        //icon widget
         Positioned(
           top: Dimensions.height45,
           left: Dimensions.width20,
@@ -40,6 +43,7 @@ class PopularFoodDetail extends StatelessWidget {
             ],
           ),
         ),
+        //introduction of food
         Positioned(
             left: 0,
             right: 0,
@@ -62,9 +66,19 @@ class PopularFoodDetail extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height20,
                     ),
-                    BigText(text: "Introduce")
+                    BigText(text: "Introduce"),
+                    SizedBox(
+                      height: Dimensions.height20,
+                    ),
+                    const Expanded(
+                        child: SingleChildScrollView(
+                            child: ExpandableTextWidget(
+                      text:
+                          "Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..",
+                    ))),
                   ],
                 ))),
+        //expandable text widget
       ]),
       bottomNavigationBar: Container(
           height: Dimensions.bottomHeightBar,
