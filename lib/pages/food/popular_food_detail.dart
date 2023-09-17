@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/widgets/expandable_text_widget.dart';
 
-import '../../../utils/dimensions.dart';
-import '../../../widgets/app_column.dart';
-import '../../../widgets/app_icon.dart';
-import '../../../widgets/big_text.dart';
+import '../../utils/dimensions.dart';
+import '../../widgets/app_column.dart';
+import '../../widgets/app_icon.dart';
+import '../../widgets/big_text.dart';
 
 class PopularFoodDetail extends StatelessWidget {
   const PopularFoodDetail({Key? key}) : super(key: key);

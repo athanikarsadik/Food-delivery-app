@@ -3,8 +3,8 @@ import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/widgets/app_icon.dart';
 import 'package:food_delivery/widgets/expandable_text_widget.dart';
 
-import '../../../utils/dimensions.dart';
-import '../../../widgets/big_text.dart';
+import '../../utils/dimensions.dart';
+import '../../widgets/big_text.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
   const RecommendedFoodDetail({Key? key}) : super(key: key);
@@ -105,20 +105,20 @@ class RecommendedFoodDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  padding: EdgeInsets.only(
-                      top: Dimensions.height20,
-                      bottom: Dimensions.height20,
-                      left: Dimensions.width20,
-                      right: Dimensions.width20),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.radius20),
-                      color: Colors.white),
-                  child: Icon(
-                    Icons.favorite,
-                    color:AppColors.mainColor,
-                    size: Dimensions.iconSize24,
-                  )
-                ),
+                    padding: EdgeInsets.only(
+                        top: Dimensions.height20,
+                        bottom: Dimensions.height20,
+                        left: Dimensions.width20,
+                        right: Dimensions.width20),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.radius20),
+                        color: Colors.white),
+                    child: Icon(
+                      Icons.favorite,
+                      color: AppColors.mainColor,
+                      size: Dimensions.iconSize24,
+                    )),
                 Container(
                     padding: EdgeInsets.only(
                         top: Dimensions.height20,
