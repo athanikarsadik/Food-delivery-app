@@ -2,24 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/widgets/app_icon.dart';
 import 'package:food_delivery/widgets/expandable_text_widget.dart';
+import 'package:get/get.dart';
 
+import '../../controllers/recommended_food_controller.dart';
+import '../../routes/route_helper.dart';
+import '../../utils/app_constants.dart';
 import '../../utils/dimensions.dart';
 import '../../widgets/big_text.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
-  const RecommendedFoodDetail({Key? key}) : super(key: key);
+  final int pageId;
+  const RecommendedFoodDetail({Key? key, required this.pageId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<RecommendedFoodController>().recommendedFoodList[pageId];
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             toolbarHeight: 70,
-            title: const Row(
+            title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  AppIcon(icon: Icons.clear_rounded),
+                  GestureDetector(
+                      onTap: () {
+                        Get.toNamed(RouteHelper.initial);
+                      },
+                      child: AppIcon(icon: Icons.clear_rounded)),
                   AppIcon(icon: Icons.shopping_cart_outlined),
                 ]),
             bottom: PreferredSize(
@@ -27,7 +40,7 @@ class RecommendedFoodDetail extends StatelessWidget {
               child: Container(
                 child: Center(
                     child:
-                        BigText(text: "Chinese Side", size: Dimensions.font26)),
+                        BigText(text: product.name!, size: Dimensions.font26)),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -42,19 +55,20 @@ class RecommendedFoodDetail extends StatelessWidget {
             backgroundColor: AppColors.yellowColor,
             expandedHeight: Dimensions.popularFoodImgSize,
             flexibleSpace: FlexibleSpaceBar(
-                background: Image.asset("assets/image/food0.png",
-                    width: double.maxFinite, fit: BoxFit.cover)),
+                background: Image.network(
+                    AppConstants.BASE_URL +
+                        AppConstants.UPLOAD_URL +
+                        product.img!,
+                    width: double.maxFinite,
+                    fit: BoxFit.cover)),
           ),
           SliverToBoxAdapter(
               child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(
-                    left: Dimensions.width20, right: Dimensions.width20),
-                child: const ExpandableTextWidget(
-                    text:
-                        "Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge..Chicken masala ,Ek baar khaya to life jhingalala.Kyo.. Hila dala? Ek baar khaoge baki sab bhool jaoge.."),
-              )
+                  margin: EdgeInsets.only(
+                      left: Dimensions.width20, right: Dimensions.width20),
+                  child: ExpandableTextWidget(text: product.description!))
             ],
           )),
         ],
@@ -77,7 +91,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                 iconSize: Dimensions.iconSize24,
               ),
               BigText(
-                  text: "\$12.88 X  0",
+                  text: "\$${product.price} X  0",
                   color: AppColors.mainBlackColor,
                   size: Dimensions.font26),
               AppIcon(
