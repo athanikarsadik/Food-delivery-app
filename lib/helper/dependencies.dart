@@ -17,10 +17,11 @@ Future<void> init() async{
   //Repos
   Get.lazyPut(() => PopularProductRepo(apiClient: Get.find()));
   Get.lazyPut(() => RecommendedFoodRepo(apiClient: Get.find()));
-  Get.lazyPut(() => CartRepo());
+  Get.put(CartRepo());
 
   //controller
   Get.lazyPut(() => PopularProductController(popularProductRepo: Get.find()));
   Get.lazyPut(() => RecommendedFoodController(recommendedFoodRepo: Get.find()));
-  Get.lazyPut(() => CartController(cartRepo: Get.find()));
+  // Get.lazyPut(() => CartController(cartRepo: Get.find()));
+  Get.put(CartController(cartRepo: Get.find()));
 }

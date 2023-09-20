@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/controllers/recommended_food_controller.dart';
-import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:get/get.dart';
 
 import 'helper/dependencies.dart' as dep;
@@ -20,9 +19,8 @@ class MyApp extends StatelessWidget {
     Get.find<RecommendedFoodController>().getRecommendedFoodList();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "SDK Food",
-      home:const MainFoodPage(),
-      initialRoute: RouteHelper.initial,
+      title: "Food Delivery",
+      initialRoute: RouteHelper.getInitial(),
       getPages: RouteHelper.routes
 
     );

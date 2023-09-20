@@ -25,7 +25,9 @@ class CartController extends GetxController {
             price: value.price,
             quantity: value.quantity! + quantity,
             isExist: true,
+            product: product,
             time: DateTime.now().toString());
+
       });
 
       if (totalQuantity <= 0) {
@@ -41,6 +43,7 @@ class CartController extends GetxController {
               price: product.price,
               quantity: quantity,
               isExist: true,
+              product: product,
               time: DateTime.now().toString());
         });
       } else {
@@ -48,6 +51,7 @@ class CartController extends GetxController {
             backgroundColor: AppColors.mainColor, colorText: Colors.white);
       }
     }
+    update();
   }
 
   bool existInCart(ProductModel product) {
@@ -83,5 +87,16 @@ class CartController extends GetxController {
       return e.value;
     }).toList();
   }
+
+  int get totalAmount{
+    var total = 0;
+
+    _items.forEach((key, value) { 
+      total += value.quantity!*value.price!;
+    });
+
+    return total;
+  }
+
 
 }
