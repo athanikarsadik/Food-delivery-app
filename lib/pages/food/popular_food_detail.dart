@@ -53,19 +53,12 @@ class PopularFoodDetail extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     Get.back();
-                    // if (page == 'cartPage') {
-                    //   Get.toNamed(RouteHelper.getCartPage());
-                    // } else {
-                    //   Get.toNamed(RouteHelper.initial);
-                    // }
                   },
                   child: AppIcon(icon: Icons.arrow_back_ios_new_rounded)),
               GetBuilder<PopularProductController>(builder: (popularProduct) {
                 return GestureDetector(
                   onTap: () {
-                    if (popularProduct.totalItems >= 1) {
-                      Get.toNamed(RouteHelper.getCartPage());
-                    }
+                    Get.toNamed(RouteHelper.getCartPage());
                   },
                   child: Stack(
                     children: [

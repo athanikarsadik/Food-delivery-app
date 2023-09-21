@@ -37,20 +37,13 @@ class RecommendedFoodDetail extends StatelessWidget {
                   GestureDetector(
                       onTap: () {
                         Get.back();
-                        // if (page == "cartPage") {
-                        //   Get.toNamed(RouteHelper.getCartPage());
-                        // }else{
-                        //   Get.toNamed(RouteHelper.getInitial());
-                        // }
                       },
                       child: AppIcon(icon: Icons.clear_rounded)),
                   GetBuilder<PopularProductController>(
                       builder: (popularProduct) {
                     return GestureDetector(
                       onTap: () {
-                        if (popularProduct.totalItems >= 1) {
                           Get.toNamed(RouteHelper.getCartPage());
-                        }
                       },
                       child: Stack(
                         children: [
