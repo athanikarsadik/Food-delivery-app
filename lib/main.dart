@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       builder: (_) {
         return GetBuilder<CartController>(
           builder: (_) {
+            _.getCartData();
             return GetBuilder<PopularProductController>(
               builder: (_) {
                 return GetMaterialApp(

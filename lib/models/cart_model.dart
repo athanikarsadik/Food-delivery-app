@@ -8,8 +8,7 @@ class CartModel {
   int? quantity;
   bool? isExist;
   String? time;
-  ProductModel ?product;
-
+  ProductModel? product;
 
   CartModel(
       {this.id,
@@ -19,8 +18,7 @@ class CartModel {
       this.isExist,
       this.quantity,
       this.time,
-      this.product
-      });
+      this.product});
 
   CartModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -28,8 +26,21 @@ class CartModel {
     price = json['price'];
     img = json['img'];
     quantity = json['quantity'];
-    isExist = json['isExist'];  
-    time = json['time'];  
+    isExist = json['isExist'];
+    time = json['time'];
     product = ProductModel.fromJson(json['product']);
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': this.id,
+      'name': this.name,
+      'price': this.price,
+      'img': this.img,
+      'quantity': this.quantity,
+      'isExist': this.isExist,
+      'time': this.time,
+      "product": this.product!.toJson(),
+    };
   }
 }
