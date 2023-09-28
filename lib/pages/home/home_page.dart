@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/pages/auth/sign_up_page.dart';
 import 'package:food_delivery/pages/cart/cart_history.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+
+import '../account/account_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,17 +20,9 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _buildScreens() {
     return [
       const MainFoodPage(),
-      Container(
-        child: const Center(
-          child: Text('search'),
-        ),
-      ),
+      const SignUpPage(),
       const CartHistory(),
-      Container(
-        child: const Center(
-          child: Text('settings'),
-        ),
-      ),
+      const AccountPage(),
     ];
   }
 
@@ -95,7 +90,7 @@ class _HomePageState extends State<HomePage> {
       screenTransitionAnimation: const ScreenTransitionAnimation(
         // Screen transition animation on change of selected tab.
         animateTabTransition: true,
-        curve: Curves.linear,
+        curve: Curves.fastOutSlowIn,
         duration: Duration(milliseconds: 300),
       ),
       navBarStyle:

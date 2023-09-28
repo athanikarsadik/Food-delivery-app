@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/popular_product_controller.dart';
 import '../../controllers/recommended_food_controller.dart';
+import '../auth/sign_in_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -40,7 +40,8 @@ class _SplashScreenState extends State<SplashScreen>
           ..forward();
     animation2 = CurvedAnimation(parent: controller1, curve: Curves.fastEaseInToSlowEaseOut);
     Timer(const Duration(milliseconds: 3100), () {
-      Get.offNamed(RouteHelper.getInitial());
+      // Get.offNamed(RouteHelper.getInitial());
+      Get.off(const SignInPage());
     });
   }
 
